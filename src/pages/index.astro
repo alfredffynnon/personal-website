@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const essays = (await getCollection('writing', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 4);
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+// Tagline alternatives — swap freely:
+// "Applied mathematics at Harvard. Game theory, geopolitics, and the politics of technology."
+// "Studying applied mathematics at Harvard; writing about strategy, states, and machines."
+const tagline = 'Applied mathematics student at Harvard, writing on game theory and geopolitics.';
+---
+<Base
+  title="Alfred Williamson — Writing on Game Theory and Geopolitics"
+  description="Alfred Williamson is an applied mathematics student at Harvard College writing on game theory, geopolitics, and the politics of technology."
+  current="home"
+>
+  <h1>Alfred Williamson</h1>
+  <p class="tagline">{tagline}</p>
+  <p>
+    I study applied mathematics at Harvard College and write about how game theory
+    explains, and fails to explain, the behaviour of states. I have spoken publicly
+    on the position of international students in the United States, including on
+    <a href="https://www.cnn.com/2025/05/30/us/video/harvard-international-students-visa-trump-digvid">CNN</a>
+    and in the
+    <a href="https://theharvardpoliticalreview.com/international-student-stories-alfred-williamson/">Harvard Political Review</a>.
+  </p>
+
+  <h2>Recent writing</h2>
+  <ul class="essay-list">
+    {essays.map((e) => (
+      <li>
+        <a href={`/writing/${e.id}/`}>{e.data.title}</a>
+        <span class="date">{fmt(e.data.date)}</span>
+      </li>
+    ))}
+  </ul>
+  <p><a href="/writing/">All writing →</a></p>
+</Base>
