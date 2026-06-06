@@ -1,14 +1,16 @@
 ---
 import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
   title: string;
   description: string;
   ogType?: string;
   current?: string;
+  progress?: boolean;
 }
 
-const { title, description, ogType = 'website', current = '' } = Astro.props;
+const { title, description, ogType = 'website', current = '', progress = false } = Astro.props;
 let path = Astro.url.pathname;
 if (!path.endsWith('/')) path += '/';
 const canonical = new URL(path, Astro.site);
@@ -32,30 +34,38 @@ const nav = [
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="alternate" type="application/rss+xml" title="Alfred Williamson — Writing" href="/rss.xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content="Alfred Williamson" />
     <meta name="twitter:card" content="summary" />
+    <ClientRouter />
   </head>
   <body>
+    {progress && <div class="progress" aria-hidden="true"></div>}
     <div class="container">
       <header class="site">
-        <nav aria-label="Main">
-          {nav.map((item) => (
-            <a href={item.href} aria-current={current === item.key ? 'page' : undefined}>{item.label}</a>
-          ))}
-        </nav>
+        <div class="masthead-rule">
+          <nav aria-label="Main">
+            {nav.map((item) => (
+              <a href={item.href} aria-current={current === item.key ? 'page' : undefined}>{item.label}</a>
+            ))}
+          </nav>
+        </div>
       </header>
       <main>
         <slot />
       </main>
       <footer class="site">
-        <p>
+        <div class="footer-row">
           <span id="contact-email">alfredwilliamson [at] college.harvard.edu</span>
-          &nbsp;·&nbsp; <a href="/rss.xml">RSS</a>
-        </p>
+          <span>Cymru · Danmark · Cambridge, Mass.</span>
+          <a href="/rss.xml">RSS</a>
+        </div>
         <script>
           // Assemble the mailto link client-side to deter scrapers.
           const u = 'alfredwilliamson';
