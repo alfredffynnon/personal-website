@@ -3,34 +3,77 @@ import Base from '../layouts/Base.astro';
 
 const items = [
   {
-    outlet: 'CNN',
-    title: "'As soon as they give in, Trump wins': Harvard international student urges the school to keep standing up",
-    date: 'May 2025',
-    url: 'https://www.cnn.com/2025/05/30/us/video/harvard-international-students-visa-trump-digvid'
-  },
-  {
-    outlet: 'Harvard Political Review',
-    title: 'Resisting Silence: Fighting for International Students in the Face of Fear',
-    date: '2025',
-    url: 'https://theharvardpoliticalreview.com/international-student-stories-alfred-williamson/'
+    outlet: 'The Harvard Crimson · Fifteen Minutes',
+    title: 'Eight International Students at Harvard, Watching America Close Its Doors',
+    date: 'October 2025',
+    url: 'https://www.thecrimson.com/article/2025/10/11/international-students-harvard-trump/'
   },
   {
     outlet: 'The Harvard Crimson',
     title: "After Harvard's Court Victory, Students and Faculty Rally Against Deal With Trump",
     date: 'September 2025',
     url: 'https://www.thecrimson.com/article/2025/9/7/students-for-freedom-fall-protest/'
+  },
+  {
+    outlet: 'The Harvard Crimson',
+    title: "'Completely Unpredictable': How Visa Risks Complicated Summer Travel for Harvard's International Students",
+    date: 'September 2025',
+    url: 'https://www.thecrimson.com/article/2025/9/4/international-students-summer-travel-visa/'
+  },
+  {
+    outlet: 'The Boston Globe',
+    title: "'We are not welcome or safe': Trump administration moves to limit international students' visa stays",
+    date: 'August 2025',
+    url: 'https://www.bostonglobe.com/2025/08/29/metro/trump-administration-international-student-visas/'
+  },
+  {
+    outlet: 'WBUR',
+    title: "For international students, it's back to school but not back to normal",
+    date: 'August 2025',
+    url: 'https://www.wbur.org/news/2025/08/26/massachusetts-international-students-customs-trump-administration'
+  },
+  {
+    outlet: 'NPR · Morning Edition',
+    title: 'Harvard and the Trump administration return to court over international students',
+    date: 'June 2025',
+    url: 'https://www.npr.org/2025/06/16/nx-s1-5432750/harvard-lawsuit-international-students-hearing'
+  },
+  {
+    outlet: 'Newsweek',
+    title: "Harvard Students 'Incredibly Afraid' Over Future Career After Trump's Move",
+    date: 'June 2025',
+    url: 'https://www.newsweek.com/harvard-university-student-afraid-trump-immigration-2080881'
+  },
+  {
+    outlet: 'CNN',
+    title: "'As soon as they give in, Trump wins': Harvard international student urges the school to keep standing up",
+    date: 'May 2025',
+    url: 'https://www.cnn.com/2025/05/30/us/video/harvard-international-students-visa-trump-digvid'
+  },
+  {
+    outlet: 'Reuters',
+    title: 'Welsh Harvard student, caught up in Trump visa fight, fears he may never return',
+    date: 'May 2025',
+    url: 'https://www.reuters.com/world/uk/welsh-harvard-student-caught-up-trump-row-fears-he-may-never-return-2025-05-28/'
+  },
+  {
+    outlet: 'The Boston Globe',
+    title: "Harvard students protest despite fears, risks: 'If we start to self silence, then we're on a very dangerous track'",
+    date: 'April 2025',
+    url: 'https://www.bostonglobe.com/2025/04/29/metro/harvard-international-students-protest/'
   }
 ];
 ---
 <Base
   title="Press | Alfred Williamson"
-  description="Press coverage of Alfred Williamson, including CNN, the Harvard Political Review, and the Harvard Crimson."
+  description="Press coverage of Alfred Williamson, including Reuters, CNN, NPR, the Boston Globe, Newsweek, WBUR, and the Harvard Crimson."
   current="press"
 >
   <h1>Press</h1>
   <p>
     Coverage of my advocacy for international students during the 2025 federal
-    actions against Harvard.
+    actions against Harvard, beginning with a rally speech in April and a summer
+    spent unsure I could return to the country.
   </p>
   <ul class="press-list">
     {items.map((i) => (
@@ -40,4 +83,8 @@ const items = [
       </li>
     ))}
   </ul>
+  <p class="note" style="margin-top: 1.6rem;">
+    In my own words: <a href="https://theharvardpoliticalreview.com/international-student-stories-alfred-williamson/">Resisting Silence: Fighting for International Students in the Face of Fear</a>,
+    an essay for the Harvard Political Review's international-student series.
+  </p>
 </Base>
