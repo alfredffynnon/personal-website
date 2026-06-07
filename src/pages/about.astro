@@ -10,6 +10,7 @@ const jsonLd = JSON.stringify({
     '@id': 'https://alfredwilliamson.com/about#person',
     name: 'Alfred Williamson',
     url: 'https://alfredwilliamson.com',
+    image: 'https://alfredwilliamson.com/alfred.jpg',
     jobTitle: 'Undergraduate, Applied Mathematics',
     affiliation: { '@type': 'CollegeOrUniversity', name: 'Harvard College' },
     nationality: ['Welsh', 'Danish'],
@@ -19,7 +20,10 @@ const jsonLd = JSON.stringify({
       { '@type': 'NewsArticle', url: 'https://theharvardpoliticalreview.com/international-student-stories-alfred-williamson/', publisher: { '@type': 'Organization', name: 'Harvard Political Review' } },
       { '@type': 'NewsArticle', url: 'https://www.thecrimson.com/article/2025/9/7/students-for-freedom-fall-protest/', publisher: { '@type': 'Organization', name: 'The Harvard Crimson' } },
       { '@type': 'NewsArticle', url: 'https://www.reuters.com/world/uk/welsh-harvard-student-caught-up-trump-row-fears-he-may-never-return-2025-05-28/', publisher: { '@type': 'Organization', name: 'Reuters' } },
-      { '@type': 'NewsArticle', url: 'https://www.npr.org/2025/06/16/nx-s1-5432750/harvard-lawsuit-international-students-hearing', publisher: { '@type': 'Organization', name: 'NPR' } }
+      { '@type': 'NewsArticle', url: 'https://www.npr.org/2025/06/16/nx-s1-5432750/harvard-lawsuit-international-students-hearing', publisher: { '@type': 'Organization', name: 'NPR' } },
+      { '@type': 'NewsArticle', url: 'https://www.nytimes.com/2025/06/07/us/trump-harvard-international-student-ban.html', publisher: { '@type': 'Organization', name: 'The New York Times' } },
+      { '@type': 'NewsArticle', url: 'https://www.theguardian.com/us-news/2025/may/30/welsh-first-year-at-harvard-fears-trump-ban-will-stop-him-finishing-degree', publisher: { '@type': 'Organization', name: 'The Guardian' } },
+      { '@type': 'NewsArticle', url: 'https://www.bbc.com/news/articles/c62n02ez3v0o', publisher: { '@type': 'Organization', name: 'BBC News' } }
     ]
   }
 });
@@ -31,6 +35,7 @@ const jsonLd = JSON.stringify({
   current="about"
 >
   <h1>About</h1>
+  <img class="portrait" src="/alfred.jpg" alt="Alfred Williamson at the Harvard Student Conference, in front of an EU flag" width="800" height="836" />
   <p>
     I am a second-year student at Harvard College studying applied mathematics. My
     current work sits at the intersection of game theory and geopolitics: how formal
@@ -59,11 +64,14 @@ const jsonLd = JSON.stringify({
   </p>
   <p>
     In 2025, when the federal government moved to restrict Harvard&rsquo;s international
-    students, I spoke publicly against the university yielding &mdash; at rallies covered by
-    the <a href="https://www.thecrimson.com/article/2025/9/7/students-for-freedom-fall-protest/">Harvard Crimson</a>,
-    on <a href="https://www.cnn.com/2025/05/30/us/video/harvard-international-students-visa-trump-digvid">CNN</a>,
-    by <a href="https://www.reuters.com/world/uk/welsh-harvard-student-caught-up-trump-row-fears-he-may-never-return-2025-05-28/">Reuters</a>,
-    and on <a href="https://www.npr.org/2025/06/16/nx-s1-5432750/harvard-lawsuit-international-students-hearing">NPR</a>;
+    students, I spoke publicly against the university yielding &mdash; in profiles by
+    <a href="https://www.nytimes.com/2025/06/07/us/trump-harvard-international-student-ban.html">the New York Times</a>,
+    <a href="https://www.theguardian.com/us-news/2025/may/30/welsh-first-year-at-harvard-fears-trump-ban-will-stop-him-finishing-degree">the Guardian</a>,
+    and <a href="https://www.reuters.com/world/uk/welsh-harvard-student-caught-up-trump-row-fears-he-may-never-return-2025-05-28/">Reuters</a>,
+    on <a href="https://www.cnn.com/2025/05/30/us/video/harvard-international-students-visa-trump-digvid">CNN</a>
+    and <a href="https://www.npr.org/2025/06/16/nx-s1-5432750/harvard-lawsuit-international-students-hearing">NPR</a>,
+    and at rallies covered by the
+    <a href="https://www.thecrimson.com/article/2025/9/7/students-for-freedom-fall-protest/">Harvard Crimson</a>;
     the full list is on the <a href="/press/">press page</a>. I remain involved in that work.
   </p>
   <p>
@@ -76,6 +84,7 @@ const jsonLd = JSON.stringify({
   <p>
     The best way to reach me is email (footer of this page), or
     <a href="https://www.linkedin.com/in/alfred-williamson-137b6020b/">LinkedIn</a>.
+    A current CV is <a href="/cv.pdf">here</a>.
   </p>
 
   <h2>For journalists</h2>
@@ -83,9 +92,10 @@ const jsonLd = JSON.stringify({
     Alfred Williamson is a second-year undergraduate at Harvard College studying
     applied mathematics, with research interests in game theory and geopolitics. A
     Welsh-Danish international student, he has been a prominent student voice on US
-    visa restrictions affecting international students, appearing on CNN and NPR and
-    in coverage by Reuters, the Boston Globe, Newsweek, and the Harvard Crimson. He
-    can be reached by email at the address in the footer of alfredwilliamson.com.
+    visa restrictions affecting international students, profiled by the New York
+    Times, the Guardian, and Reuters, and appearing on CNN and NPR and in coverage by
+    the BBC, the Boston Globe, Newsweek, and the Harvard Crimson. He can be reached by
+    email at the address in the footer of alfredwilliamson.com.
   </p>
   <script type="application/ld+json" set:html={jsonLd} />
 </Base>
