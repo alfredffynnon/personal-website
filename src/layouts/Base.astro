@@ -7,18 +7,16 @@ interface Props {
   description: string;
   ogType?: string;
   current?: string;
-  progress?: boolean;
 }
 
-const { title, description, ogType = 'website', current = '', progress = false } = Astro.props;
+const { title, description, ogType = 'website', current = '' } = Astro.props;
 let path = Astro.url.pathname;
 if (!path.endsWith('/')) path += '/';
 const canonical = new URL(path, Astro.site);
 
 const nav = [
-  { href: '/', label: 'Home', key: 'home' },
+  { href: '/', label: 'Bio', key: 'home' },
   { href: '/writing/', label: 'Writing', key: 'writing' },
-  { href: '/about/', label: 'About', key: 'about' },
   { href: '/press/', label: 'Press', key: 'press' },
   { href: '/projects/', label: 'Projects', key: 'projects' }
 ];
@@ -34,9 +32,6 @@ const nav = [
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="alternate" type="application/rss+xml" title="Alfred Williamson — Writing" href="/rss.xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content={ogType} />
@@ -46,24 +41,24 @@ const nav = [
     <ClientRouter />
   </head>
   <body>
-    {progress && <div class="progress" aria-hidden="true"></div>}
     <div class="container">
       <header class="site">
-        <div class="masthead-rule">
-          <nav aria-label="Main">
-            {nav.map((item) => (
-              <a href={item.href} aria-current={current === item.key ? 'page' : undefined}>{item.label}</a>
-            ))}
-          </nav>
-        </div>
+        {current === 'home'
+          ? <h1 class="site-name">Alfred Williamson</h1>
+          : <p class="site-name"><a href="/">Alfred Williamson</a></p>}
+        <nav aria-label="Main">
+          {nav.map((item) => (
+            <a href={item.href} aria-current={current === item.key ? 'page' : undefined}>{item.label}</a>
+          ))}
+        </nav>
       </header>
       <main>
         <slot />
       </main>
       <footer class="site">
         <div class="footer-row">
+          <span>&copy; 2026 Alfred Williamson</span>
           <span id="contact-email">alfredwilliamson [at] college.harvard.edu</span>
-          <span>Cymru · Danmark · Cambridge, Mass.</span>
           <a href="/rss.xml">RSS</a>
         </div>
         <script>
