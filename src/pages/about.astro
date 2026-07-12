@@ -1,101 +1,17 @@
 ---
-import Base from '../layouts/Base.astro';
-
-const jsonLd = JSON.stringify({
-  '@context': 'https://schema.org',
-  '@type': 'ProfilePage',
-  dateModified: new Date().toISOString().slice(0, 10),
-  mainEntity: {
-    '@type': 'Person',
-    '@id': 'https://alfredwilliamson.com/about#person',
-    name: 'Alfred Williamson',
-    url: 'https://alfredwilliamson.com',
-    image: 'https://alfredwilliamson.com/alfred.jpg',
-    jobTitle: 'Undergraduate, Applied Mathematics',
-    affiliation: { '@type': 'CollegeOrUniversity', name: 'Harvard College' },
-    nationality: ['Welsh', 'Danish'],
-    sameAs: ['https://www.linkedin.com/in/alfred-williamson-137b6020b/'],
-    subjectOf: [
-      { '@type': 'NewsArticle', url: 'https://www.cnn.com/2025/05/30/us/video/harvard-international-students-visa-trump-digvid', publisher: { '@type': 'Organization', name: 'CNN' } },
-      { '@type': 'NewsArticle', url: 'https://theharvardpoliticalreview.com/international-student-stories-alfred-williamson/', publisher: { '@type': 'Organization', name: 'Harvard Political Review' } },
-      { '@type': 'NewsArticle', url: 'https://www.thecrimson.com/article/2025/9/7/students-for-freedom-fall-protest/', publisher: { '@type': 'Organization', name: 'The Harvard Crimson' } },
-      { '@type': 'NewsArticle', url: 'https://www.reuters.com/world/us/welsh-harvard-student-caught-up-trump-row-fears-he-may-never-return-2025-05-28/', publisher: { '@type': 'Organization', name: 'Reuters' } },
-      { '@type': 'NewsArticle', url: 'https://www.npr.org/2025/06/16/nx-s1-5432750/harvard-lawsuit-international-students-hearing', publisher: { '@type': 'Organization', name: 'NPR' } },
-      { '@type': 'NewsArticle', url: 'https://www.nytimes.com/2025/06/07/us/trump-harvard-international-student-ban.html', publisher: { '@type': 'Organization', name: 'The New York Times' } },
-      { '@type': 'NewsArticle', url: 'https://www.theguardian.com/us-news/2025/may/30/welsh-first-year-at-harvard-fears-trump-ban-will-stop-him-finishing-degree', publisher: { '@type': 'Organization', name: 'The Guardian' } },
-      { '@type': 'NewsArticle', url: 'https://www.bbc.com/news/articles/c62n02ez3v0o', publisher: { '@type': 'Organization', name: 'BBC News' } }
-    ]
-  }
-});
+// The bio moved to the homepage in the July 2026 redesign.
+// This page exists only to redirect old /about/ links.
 ---
-<Base
-  title="About | Alfred Williamson"
-  description="About Alfred Williamson: applied mathematics at Harvard College, game theory and geopolitics, research on Russia–China relations, and public advocacy for international students."
-  ogType="profile"
-  current="about"
->
-  <h1>About</h1>
-  <img class="portrait" src="/alfred.jpg" alt="Alfred Williamson at the Harvard Student Conference, in front of an EU flag" width="800" height="836" />
-  <p>
-    I am a second-year student at Harvard College studying applied mathematics. My
-    current work sits at the intersection of game theory and geopolitics: how formal
-    models of cooperation and defection hold up when the players are states with
-    asymmetric power, asymmetric information, and choices that are never simply
-    binary. I expect this to become my senior thesis.
-  </p>
-  <p>
-    I am a research intern at the Regional Institute of Security Studies (RISS),
-    where I analyse Russia&rsquo;s economic relationship with China through customs
-    data, with policy analysis produced through RISS&rsquo;s partnership with the
-    Royal United Services Institute. At Harvard I am Deputy Chair of the Institute
-    of Politics&rsquo; Global Affairs Program, where I lead a fifty-person team, the
-    undergraduate body&rsquo;s first International Student Liaison, and Head of Growth
-    &amp; Strategy at the Harvard International Review. I also co-founded Varsko
-    Intelligence, an early-stage project on geopolitical risk.
-  </p>
-  <p>
-    Before this I was a guest researcher at the University of Copenhagen&rsquo;s
-    Faculty of Law, coding decisions of the African Court on Human and Peoples&rsquo;
-    Rights at its centre for international courts, and researched military
-    applications of synthetic biology for NATO&rsquo;s innovation division with the
-    Harvard Undergraduate Foreign Policy Initiative, presenting the findings at NATO
-    headquarters in Brussels. I co-founded Advisor AI, an assistant for financial
-    advisors, during my first year.
-  </p>
-  <p>
-    In 2025, when the federal government moved to restrict Harvard&rsquo;s international
-    students, I spoke publicly against the university yielding &mdash; in profiles by
-    <a href="https://www.nytimes.com/2025/06/07/us/trump-harvard-international-student-ban.html">the New York Times</a>,
-    <a href="https://www.theguardian.com/us-news/2025/may/30/welsh-first-year-at-harvard-fears-trump-ban-will-stop-him-finishing-degree">the Guardian</a>,
-    and <a href="https://www.reuters.com/world/us/welsh-harvard-student-caught-up-trump-row-fears-he-may-never-return-2025-05-28/">Reuters</a>,
-    on <a href="https://www.cnn.com/2025/05/30/us/video/harvard-international-students-visa-trump-digvid">CNN</a>
-    and <a href="https://www.npr.org/2025/06/16/nx-s1-5432750/harvard-lawsuit-international-students-hearing">NPR</a>,
-    and at rallies covered by the
-    <a href="https://www.thecrimson.com/article/2025/9/7/students-for-freedom-fall-protest/">Harvard Crimson</a>;
-    the full list is on the <a href="/press/">press page</a>. I remain involved in that work.
-  </p>
-  <p>
-    I grew up in Cardiff, half Welsh and half Danish, which is one reason the
-    politics of small states next to large ones holds my attention. I rowed for
-    Wales, and was part of the UK team that won the NASA Space Settlement Design
-    Competition. I speak English and Danish, some Norwegian, and am slowly acquiring
-    Spanish. Off duty: piano, saxophone, and long-distance trekking.
-  </p>
-  <p>
-    The best way to reach me is email (footer of this page), or
-    <a href="https://www.linkedin.com/in/alfred-williamson-137b6020b/">LinkedIn</a>.
-    A current CV is <a href="/cv.pdf">here</a>.
-  </p>
-
-  <h2>For journalists</h2>
-  <p class="note">
-    Alfred Williamson is a second-year undergraduate at Harvard College studying
-    applied mathematics, with research interests in game theory and geopolitics. A
-    Welsh-Danish international student, he has been a prominent student voice on US
-    visa restrictions affecting international students, profiled by the New York
-    Times, the Guardian, and Reuters, and appearing on CNN and NPR and in coverage by
-    the BBC, the Boston Globe, Newsweek, and the Harvard Crimson. He can be reached by
-    email at the address in the footer of alfredwilliamson.com.
-  </p>
-  <script type="application/ld+json" set:html={jsonLd} />
-</Base>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Alfred Williamson</title>
+    <meta http-equiv="refresh" content="0;url=/" />
+    <link rel="canonical" href="https://alfredwilliamson.com/" />
+    <meta name="robots" content="noindex" />
+  </head>
+  <body>
+    <p><a href="/">Alfred Williamson</a></p>
+  </body>
+</html>

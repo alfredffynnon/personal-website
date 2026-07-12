@@ -1,48 +1,73 @@
 ---
 import Base from '../layouts/Base.astro';
-import { getCollection } from 'astro:content';
 
-const essays = (await getCollection('writing', ({ data }) => !data.draft))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 4);
-
-const fmt = (d: Date) =>
-  d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-
-// Tagline alternatives — swap freely:
-// "Applied mathematics at Harvard. Game theory, geopolitics, and the politics of technology."
-// "Studying applied mathematics at Harvard; writing about strategy, states, and machines."
-const tagline = 'Applied mathematics student at Harvard, writing on game theory and geopolitics.';
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  dateModified: new Date().toISOString().slice(0, 10),
+  mainEntity: {
+    '@type': 'Person',
+    '@id': 'https://alfredwilliamson.com/#person',
+    name: 'Alfred Williamson',
+    url: 'https://alfredwilliamson.com',
+    image: 'https://alfredwilliamson.com/alfred.jpg',
+    jobTitle: 'Undergraduate, Applied Mathematics',
+    affiliation: { '@type': 'CollegeOrUniversity', name: 'Harvard College' },
+    nationality: ['Welsh', 'Danish'],
+    sameAs: ['https://www.linkedin.com/in/alfred-williamson-137b6020b/'],
+    subjectOf: [
+      { '@type': 'NewsArticle', url: 'https://www.nytimes.com/2025/06/07/us/trump-harvard-international-student-ban.html', publisher: { '@type': 'Organization', name: 'The New York Times' } },
+      { '@type': 'NewsArticle', url: 'https://www.theguardian.com/us-news/2025/may/30/welsh-first-year-at-harvard-fears-trump-ban-will-stop-him-finishing-degree', publisher: { '@type': 'Organization', name: 'The Guardian' } },
+      { '@type': 'NewsArticle', url: 'https://www.reuters.com/world/us/welsh-harvard-student-caught-up-trump-row-fears-he-may-never-return-2025-05-28/', publisher: { '@type': 'Organization', name: 'Reuters' } },
+      { '@type': 'NewsArticle', url: 'https://www.cnn.com/2025/05/30/us/video/harvard-international-students-visa-trump-digvid', publisher: { '@type': 'Organization', name: 'CNN' } },
+      { '@type': 'NewsArticle', url: 'https://www.npr.org/2025/06/16/nx-s1-5432750/harvard-lawsuit-international-students-hearing', publisher: { '@type': 'Organization', name: 'NPR' } },
+      { '@type': 'NewsArticle', url: 'https://www.bbc.com/news/articles/c62n02ez3v0o', publisher: { '@type': 'Organization', name: 'BBC News' } },
+      { '@type': 'NewsArticle', url: 'https://theharvardpoliticalreview.com/international-student-stories-alfred-williamson/', publisher: { '@type': 'Organization', name: 'Harvard Political Review' } },
+      { '@type': 'NewsArticle', url: 'https://www.thecrimson.com/article/2025/9/7/students-for-freedom-fall-protest/', publisher: { '@type': 'Organization', name: 'The Harvard Crimson' } }
+    ]
+  }
+});
 ---
 <Base
-  title="Alfred Williamson — Writing on Game Theory and Geopolitics"
+  title="Alfred Williamson"
   description="Alfred Williamson is an applied mathematics student at Harvard College writing on game theory, geopolitics, and the politics of technology."
+  ogType="profile"
   current="home"
 >
-  <h1 class="home-name">Alfred Williamson</h1>
-  <p class="tagline">{tagline}</p>
-  <p>
-    I study applied mathematics at Harvard College and write about how game theory
-    explains, and fails to explain, the behaviour of states. I have spoken publicly
-    on the position of international students in the United States, including in
-    profiles by
-    <a href="https://www.nytimes.com/2025/06/07/us/trump-harvard-international-student-ban.html">the New York Times</a>,
-    <a href="https://www.theguardian.com/us-news/2025/may/30/welsh-first-year-at-harvard-fears-trump-ban-will-stop-him-finishing-degree">the Guardian</a>,
-    and <a href="https://www.reuters.com/world/us/welsh-harvard-student-caught-up-trump-row-fears-he-may-never-return-2025-05-28/">Reuters</a>,
-    and on <a href="https://www.cnn.com/2025/05/30/us/video/harvard-international-students-visa-trump-digvid">CNN</a>
-    and <a href="https://www.npr.org/2025/06/16/nx-s1-5432750/harvard-lawsuit-international-students-hearing">NPR</a>.
-  </p>
-
-  <div class="section-head">
-    <span class="meta">Recent writing</span>
+  <div class="bio">
+    <img class="portrait" src="/alfred.jpg" alt="Alfred Williamson at the Harvard Student Conference, in front of an EU flag" width="800" height="836" />
+    <div>
+      <p>
+        I am a second-year student at Harvard College studying applied mathematics.
+        My work sits at the intersection of game theory and geopolitics: how formal
+        models of cooperation and defection hold up when the players are states with
+        asymmetric power, asymmetric information, and choices that are never simply
+        binary. The <a href="/writing/">writing</a> on this site comes out of that work.
+      </p>
+      <p>
+        I am a research intern at the Regional Institute of Security Studies, where I
+        analyse Russia&rsquo;s economic relationship with China through customs data,
+        Deputy Chair of the Harvard Institute of Politics&rsquo; Global Affairs
+        Program, the undergraduate body&rsquo;s first International Student Liaison,
+        and co-founder of Varsko Intelligence. Previously I was a guest researcher at
+        the University of Copenhagen&rsquo;s centre for international courts and
+        researched military applications of synthetic biology for NATO&rsquo;s
+        innovation division.
+      </p>
+      <p>
+        In 2025, when the federal government moved to restrict Harvard&rsquo;s
+        international students, I spoke publicly against the university yielding, in
+        profiles by the New York Times, the Guardian, and Reuters, and on CNN and
+        NPR. The full list is on the <a href="/press/">press page</a>.
+      </p>
+      <p>
+        I grew up in Cardiff, half Welsh and half Danish, which is one reason the
+        politics of small states next to large ones holds my attention. The best way
+        to reach me is email (footer of this page) or
+        <a href="https://www.linkedin.com/in/alfred-williamson-137b6020b/">LinkedIn</a>.
+        A current CV is <a href="/cv.pdf">here</a>.
+      </p>
+    </div>
   </div>
-  <ul class="essay-list">
-    {essays.map((e) => (
-      <li>
-        <a class="title" href={`/writing/${e.id}/`}>{e.data.title}</a>
-        <span class="date">{fmt(e.data.date)}</span>
-      </li>
-    ))}
-  </ul>
-  <p style="margin-top: 1.2rem;"><a href="/writing/">All writing →</a></p>
+  <script type="application/ld+json" set:html={jsonLd} />
 </Base>
